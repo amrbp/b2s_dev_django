@@ -73,6 +73,7 @@ CLOUDINARY_STORAGE = {
 INTERNAL_IPS = [
     # ...
     '127.0.0.1',
+    'thawing-falls-41503.herokuapp.com',
     # ...
 ]
 
