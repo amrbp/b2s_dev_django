@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'debug_toolbar', 
+    'debug_toolbar',
+    'cloudinary_storage',
+    'cloudinary', 
     
 ]
 
@@ -54,12 +56,19 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dsfnmppr3',
+    'API_KEY': '219957663899629',
+    'API_SECRET': 'c5jLJRrj9ttDfK9pXPAS5sE4z9w'
+}
 
 INTERNAL_IPS = [
     # ...
@@ -148,6 +157,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'users' / 'static',
     BASE_DIR / 'products' / 'static',
     ]
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
