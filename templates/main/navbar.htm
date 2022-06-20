@@ -1,0 +1,151 @@
+{% load static %} {% load crispy_forms_tags %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+
+<div class="top-bar">
+  <div class="container">
+    <div class="text-center pt-1">
+      <ins> ช็อปครบ 599 ส่งฟรี | ชำระเงินปลอดภัย </ins>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light border-bottom">
+    <a class="navbar-brand" href="{% url 'home' %}"
+      ><img src="{% static 'images/Logo_B2S.png' %}" alt="Logo" class="logo"
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <input
+          class="form-control mr-2"
+          type="search"
+          placeholder="ค้นหา"
+          aria-label="Search"
+          style="width: 650px;"
+        />
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">
+          Search
+        </button>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <div class="btn-group mt-3">
+          {% if user.is_authenticated %}
+          <span class="material-icons mt-2">person</span>&nbsp;&nbsp;
+          <div class="font-weight-light">
+            สวัสดี &nbsp;
+            <p class="font-weight-bold">{{user.username}}</p>
+          </div>
+          <p
+            type="button"
+            class="btn btn-sm dropdown-toggle dropdown-toggle-split"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Toggle Dropdown</span>
+          </p>
+
+          <div class="dropdown-menu p-2">
+            <a class="dropdown-item" href="{% url 'profile' %}">บัญชีของฉัน</a>
+            <a class="dropdown-item" href="{% url 'products:cart' %}">การส่งซื้อของฉัน</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'logout' %}"
+              ><p class="text-danger">ออกจากระบบ</p>
+            </a>
+          </div>
+          {% else %}
+          <span class="material-icons mt-1">person</span>
+          <a type="text" href="{% url 'login' %}" class="btn btn-sm">เข้าสู่ระบบ | ลงทะเบียน</a>
+          <p
+            type="button"
+            class="btn btn-sm dropdown-toggle dropdown-toggle-split"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Toggle Dropdown</span>
+          </p>
+          <div class="dropdown-menu p-4">
+            <form class="form-signin" method="POST">
+              {% csrf_token %}
+              <fieldset class="form-group">
+                <br />
+                {{ form|crispy }}
+              </fieldset>
+              <div class="form-group">
+                <button
+                  class="btn btn-lg btn-primary btn-block text-uppercase"
+                  type="submit"
+                >
+                  Login
+                </button>
+              </div>
+            </form>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">New around here? Sign up</a>
+            <a class="dropdown-item" href="#">Forgot password?</a>
+          </div>
+          {% endif %}
+          <span class="material-icons mt-1 ml-3">favorite_border</span>
+          <a class="icon-color" href="{% url 'products:cart' %}">
+            <span class="material-icons mt-1 ml-3">shopping_basket</span>
+            
+          </a>
+          <span id="cart-total" class="pt-1">{{cartItems}}</span>
+        </div>
+      </form>
+    </div>
+  </nav>
+
+  <div class="btn-group mt-4 border-bottom">
+  {% for menu in menus %}
+  <ul class="dropdown">
+    <p
+      class=""
+      id="navbarDropdownMenuLink"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+      >{{menu}}
+    </p>
+
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      {% for category in categories %} 
+      {% if menu == category.menu %}
+      <li>
+        <a class="dropdown-item dropdown-toggle" href="#"> {{category}} </a>
+        
+        <ul class="dropdown-menu">
+          <li>
+            {% for product in nav_products %}
+            {% if category == product.category %}
+            <a class="dropdown-item" href="{% url 'products:product_detail' product.id %}">{{product.name}}</a>
+            {% endif %}
+            {% endfor %}
+          </li>
+        </ul>
+        
+      </li>
+      {% endif %} 
+      {% endfor %}
+    </ul>
+  </ul>
+  {% endfor %}
+  </div>
+</div>
+
+<script
+  type="text/javascript"
+  src="{% static 'js/bootstrap-4-navbar.js' %}"
+></script>

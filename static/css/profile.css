@@ -1,0 +1,17 @@
+.profile-header {
+  height: 90px;
+  background-image: url("../images/backgroud.jpg");
+  color: #ffffff;
+  padding: 32px;
+  font-size: 18px;
+}
+
+.profile-send {
+  line-height: 97px;
+  height: 97px;
+  text-align: center;
+}
+
+.nav-link.active{
+    background-color: red;
+}

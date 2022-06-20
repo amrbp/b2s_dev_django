@@ -1,0 +1,148 @@
+.hidden {
+    display: none !important;
+  }
+.Progressbar{
+    width: 60%;
+}
+#stepProgressBar  {
+	display:  flex;
+	justify-content:  space-evenly;
+	align-items:  flex-end;
+	margin:  0  auto;
+	margin-bottom:  40px;
+    z-index: 1;
+}
+
+.step  {
+    text-align:  center;
+    z-index: 1;
+}
+
+.step-text  {
+    margin-bottom:  10px;
+    color:  #000000;
+}
+
+
+.bullet {
+	border: 1px solid #000000;
+	height: 90px;
+	width: 90px;
+	border-radius: 100%;
+	color: #000000;
+	display: inline-block;
+	position: relative;
+	transition: background-color 500ms;
+    line-height:20px;
+    margin-top: 50px;
+    z-index: 1;
+}
+
+.bulletcomplete{
+    border: 1px solid #B82929;
+	height: 90px;
+	width: 90px;
+	border-radius: 100%;
+	color: #000000;
+	display: inline-block;
+	position: relative;
+	background-color:  #B82929;
+    line-height:20px;
+    margin-top: 50px;
+    color:  white;
+    
+}
+.next-line{
+    width: 210px;
+    height: 2px;
+    content: '';
+    position: absolute;
+    background-color: #7d7d7d;
+    top: 45px;
+    left: 88px;
+    z-index: -99;
+}
+
+.line{
+    width: 300px;
+    height: 2px;
+    content: '';
+    position: absolute;
+    background-color: #B82929;
+    top: 45px;
+    z-index: -99;
+}
+
+
+
+.bullet.completed  {
+	color:  white;
+	background-color:  #B82929;
+}
+
+
+
+.bullet.completed::after {
+    width: 210px;
+    height: 2px;
+    content: '';
+    position: absolute;
+    background-color: #B82929;
+    top: 45px;
+    left: 88px;
+    z-index: -1;
+    color: #B82929;
+}
+
+.hidden  {
+	display:  none;
+}
+ 
+button  {
+	padding:  5px  10px;
+	border:  1px  solid  black;
+	transition:  250ms background-color;
+}
+
+button:hover  {
+	cursor:  pointer;
+	background-color:  black;
+	color:  white;
+}
+
+button:disabled:hover  {
+	opacity:  0.6;
+	cursor:  not-allowed;
+}
+
+.text-center  {
+	text-align:  center;
+}
+  
+
+.step-number{
+    margin-top: 32px;
+    font-size: 24px;
+}
+
+
+.head{
+    background-color: #C4C4C4;
+    height: 48px;
+    padding:13px;
+}
+
+.image-checkout{
+    width: 95px;
+}
+
+.footer{
+    height: 48px;
+    padding:13px;
+}
+
+.custom{
+    width: 357px !important;
+}
+
+

@@ -1,0 +1,95 @@
+{% extends 'base.htm' %} {% load static %} {% block title %} Cart {% endblock title %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}" />
+<div class="container">
+  <div class="row">
+    <div class="col-8 mt-5">
+      <div class="border-top"></div>
+      <div class="p-2">ถุงช็อปปิ้ง ({{order.get_cart_item}} ชิ้น)</div>
+      <div class="border-bottom"></div>
+      {% for item in items %}
+      <div class="row p-4">
+          
+        <div class="col-3">
+          <img class="row-image" src="{{item.product.image.url}}" />
+        </div>
+        <div class="col-9">
+          <div class="row">
+            <div class="col-6">
+              <div style="flex: 2">
+                <p class="font-weight-bold">{{item.product.name}}</p>
+                <p>{{item.product.content}}</p>
+              </div>
+            </div>
+            <div class="col-3">
+              <div style="flex: 1">
+                <p class="quantity">{{item.quantity}}</p>
+                <div class="quantity">
+                  <img
+                    data-product="{{item.product.id}}"
+                    data-action="add"
+                    class="chg-quantity update-cart"
+                    src="{% static  'img/arrow-up.png' %}"
+                  />
+                  <img
+                    data-product="{{item.product.id}}"
+                    data-action="remove"
+                    class="chg-quantity update-cart"
+                    src="{% static  'img/arrow-down.png' %}"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div style="float:right; flex: 1">
+                <p>฿ {{item.product.price|floatformat:2}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+                <div class="font-weight-bold h5" style="float:right; flex: 1"><p>฿ {{item.get_total}}</p></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div style="float: right;">
+                    <span>เอาออก</span>
+                    <span>เพิ่มเข้ารายการโปรด</span>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+      <hr style="width: 90%;">
+      {% endfor %}
+    </div>
+    <div class="col-4 mt-5">
+        <div class="card p-4">
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="kuupong" placeholder="ใส่คูปองส่วนลด">
+              </div>
+              <span class="btn btn-danger">ใช้</span>
+            </div>
+          </form>
+            <hr>
+            <div class="row">
+                <div class="col-8">{{order.get_cart_item}} ชิ้น</div>
+                <div class="col-4">฿ {{order.get_cart_total}}</div>
+            </div>
+            <div class="row">
+                <div class="col-8">การจัดการและขนส่ง</div>
+                <div class="col-4">ฟรี</div>
+            </div>
+            <div class="row">
+                <div class="col-8">จำนวนเงินทั้งหมด</div>
+                <div class="col-4">฿ {{order.get_cart_total}}</div>
+            </div>
+            <hr>
+            <a href="{% url 'products:checkout' %}" class="btn btn-danger">ดำเนินการชำระเงิน</a>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

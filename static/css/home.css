@@ -1,0 +1,26 @@
+.card-img-top{
+    height: 250px;
+    width: 100%;
+}
+hr.new5 {
+    border: 1px solid black;
+    border-radius: 1px;
+    float: right;
+}
+hr.new4 {
+    border: 1px solid black;
+    border-radius: 1px;
+    float: left;
+}
+
+.footer-social{
+    background-color: #C4C4C4;
+    height: 75px;
+}
+.size-p{
+    font-size: 14px;
+}
+
+.footer-community{
+    width: 100%;
+}

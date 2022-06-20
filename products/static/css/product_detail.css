@@ -1,0 +1,15 @@
+.img_detail{
+    width: 300px;
+}
+
+hr.description_left {
+    border: 1px solid black;
+    border-radius: 1px;
+    float: right;
+}
+
+hr.description_right {
+    border: 1px solid black;
+    border-radius: 1px;
+    float: left;
+}
