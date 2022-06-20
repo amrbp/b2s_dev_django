@@ -1,0 +1,1 @@
+web: gunicorn b2s.wsgi
