@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import environ
 from pathlib import Path
-
+import dj_database_url
 env = environ.Env()
 environ.Env.read_env()
 
@@ -102,6 +102,8 @@ DATABASES={
       'PORT':'5432',
    }
 }
+
+DATABASES['default'] = dj_database_url.config(default='postgres://zoiislhegoomig:96fed0a2d4c658b05ca2a555df769621453bc8ee8e9e85d8e538f04626c1539a@ec2-52-22-136-117.compute-1.amazonaws.com:5432/d7fbvcqq9qu75h')
 
 
 # Password validation
